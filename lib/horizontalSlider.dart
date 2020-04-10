@@ -1,18 +1,17 @@
-import 'dart:math';
+import 'package:flutter/foundation.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'glob.dart';
 
-//Custom fuction to round to 2 decimals max values
-double roundDouble(double value, int nDecimals) {
-  double mod = pow(10.0, nDecimals);
-  return ((value * mod).round().toDouble() / mod);
-}
 
 class HorizontalSlider extends StatefulWidget {
+  final Socket channel;
+  HorizontalSlider({Key key, this.channel}) : super(key : key);
   @override
   _HorizontalSliderState createState() => _HorizontalSliderState();
 }
-var angVel = 0.0;
+
 class _HorizontalSliderState extends State<HorizontalSlider> {
   var sliderValue = 0.0;
   @override
