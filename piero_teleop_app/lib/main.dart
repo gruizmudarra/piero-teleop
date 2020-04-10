@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 
 void main() async {
   Socket puerto = await Socket.connect('192.168.1.131', 80);

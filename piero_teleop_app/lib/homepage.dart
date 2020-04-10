@@ -8,8 +8,6 @@ import 'horizontalSlider.dart';
 
 class HomePage extends StatefulWidget {
   final Socket channel;
-  // final int channel;
-
   HomePage({Key key, this.channel}) : super(key: key);
 
   @override
@@ -31,9 +29,8 @@ class _HomePageState extends State<HomePage> {
         /*Arrow back in App bar */
 
         /*Title text*/
-        title: Text("Teleop for LabRobPiero32"),
+        title: Text("Piero Teleop"),
         /*Title text*/
-
         actions: <Widget>[],
       ),
       /*App bar */
@@ -53,7 +50,7 @@ class _HomePageState extends State<HomePage> {
 
               Spacer(),
               Expanded(
-                child: HorizontalSlider()
+                child: HorizontalSlider(channel: widget.channel,)
               ),
             ]),
         ]),

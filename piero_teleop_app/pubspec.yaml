@@ -1,5 +1,5 @@
-name: bt_controller
-description: A new Flutter project.
+name: pieroteleop
+description: App-based controller for robots via TCP&#x2F;IP protocol
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,8 +19,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bluetooth_serial: ^0.2.2
-  scoped_model: ^1.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -14,6 +14,19 @@ class HorizontalSlider extends StatefulWidget {
 
 class _HorizontalSliderState extends State<HorizontalSlider> {
   var sliderValue = 0.0;
+
+  void _sendData() {
+    widget.channel.write(linVel);
+    widget.channel.write("\n");
+    widget.channel.write(angVel);
+    widget.channel.write("\t");
+  }
+
+  @override
+  void dispose() {
+    widget.channel.close();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -39,12 +52,14 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
                       setState(() {
                         sliderValue = newValue;
                         angVel = roundDouble(sliderValue, 2);
+                        _sendData();
                       });
                     },
                     onChangeEnd: (_) {
                       setState(() {
                         sliderValue = 0.0;
                         angVel = 0.0;
+                        _sendData();
                       });
                     }
                   ),)
