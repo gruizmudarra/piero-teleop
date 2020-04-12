@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'glob.dart';
 
+/* TODO: 1. Change the pads
+         2. Take the message with the value of the variable and
+            put it in a box in the middle of the screen */
 
 class HorizontalSlider extends StatefulWidget {
   final Socket channel;
@@ -16,17 +19,13 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
   var sliderValue = 0.0;
 
   void _sendData() {
-    widget.channel.write(linVel);
+    int l = (100*linVel).toInt();
+    int a = (100*angVel).toInt();
+    Iterable<int> package = [l, a];
+    widget.channel.writeAll(package, "\n");
     widget.channel.write("\n");
-    widget.channel.write(angVel);
-    widget.channel.write("\t");
   }
 
-  @override
-  void dispose() {
-    widget.channel.close();
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     return new Container(

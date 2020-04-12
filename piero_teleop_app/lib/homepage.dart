@@ -5,16 +5,24 @@ import 'package:flutter/material.dart';
 import 'verticalSlider.dart';
 import 'horizontalSlider.dart';
 
-
-class HomePage extends StatefulWidget {
+/*TODO: Changes in this page are:
+        2. Redistribute the pads
+        3. Make it prettier */
+class ControlPage extends StatefulWidget {
   final Socket channel;
-  HomePage({Key key, this.channel}) : super(key: key);
+  ControlPage({Key key, this.channel}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _ControlPageState createState() => _ControlPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ControlPageState extends State<ControlPage> {
+  @override
+  void dispose() {
+    widget.channel.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -25,7 +33,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.arrow_back_ios),
             onPressed: () {
               exit(0);
-            }),
+            }
+            ),
         /*Arrow back in App bar */
 
         /*Title text*/

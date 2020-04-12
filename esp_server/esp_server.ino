@@ -42,6 +42,7 @@ void setup_wifi() {
   Serial.println("WiFi connected.");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  Serial.println(WiFi.macAddress());
   digitalWrite(LED_BUILTIN,HIGH);
   wifiServer.begin();
 }
@@ -51,15 +52,17 @@ void setup_wifi() {
 */
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(LED_BUILTIN,OUTPUT);
   delay(1000);
   setup_wifi();
 }
 
 void loop() {
-  double linVel = 0.0; // Linear velocity
+  int l = 0;
+  int a = 0;
   String command = ""; // Command received from the app
+  bool firstValue = true;
   WiFiClient app = wifiServer.available();
 
   if (app) {
@@ -72,11 +75,21 @@ void loop() {
       while (app.available() > 0) {
         char c = app.read();
         if (c == '\n') {
-          linVel = command.toDouble();  // casting and saving the command string to a double variable
-          Serial.printf("Linear: %f \t", linVel);
-          break;                        // get out of the while
+          if(firstValue) { 
+            l = command.toInt();            // casting and saving the command string to a double variable
+            firstValue = false;
+            command = "";
+          }
+          else {
+              a = command.toInt();          // casting and saving the command string to a double variable
+              firstValue = true;
+              Serial.printf("Linear: %d\tAngular: %d\n",l,a);
+              break;
+            }
         }
-        command += c;                   // concatenate the received characters to form a string
+        else{
+            command += c;                   // concatenate the received characters to form a string
+          }
       }
       command = ""; // reset string
       delay(10);
