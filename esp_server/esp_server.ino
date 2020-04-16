@@ -63,7 +63,6 @@ void loop() {
   int a = 0;
   String command = ""; // Command received from the app
   bool firstValue = true;
-  byte buf[8];
   WiFiClient app = wifiServer.available();
 
   if (app) {
@@ -75,11 +74,6 @@ void loop() {
        
       while (app.available() > 0) {
         char c = app.read();
-//        c.getBytes(buf,8);
-//        for(int y = 0; y < 8; y++) {
-//          Serial.write(buf[y]);
-//          delay(500);
-//        }
         Serial.write(c);
         if (c == '\n') {
           if(firstValue) { 
@@ -89,20 +83,8 @@ void loop() {
           }
           else {
               a = command.toInt();          // casting and saving the command string to a double variable
-              buf[0] = l;
-              buf[1] = a;
               firstValue = true;
 //              Serial.printf("Linear: %d\tAngular: %d\n",l,a);
-//              Serial.print("\t");
-//              Serial.print(l,BIN);
-//              Serial.print("\n");
-//              Serial.write(l);
-
-//              delay(100);
-//              Serial.write(a);
-//              delay(100);
-              //Serial.write((byte*)&buf, dataLength);
-              //Serial.write(command);
               break;
             }
         }
