@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   MyApp(Socket s) {
     this.socket = s;
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

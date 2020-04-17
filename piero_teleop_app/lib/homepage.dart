@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'verticalSlider.dart';
 import 'horizontalSlider.dart';
 
@@ -17,9 +18,27 @@ class ControlPage extends StatefulWidget {
 }
 
 class _ControlPageState extends State<ControlPage> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Set fixed orientation
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+  }
+
   @override
   void dispose() {
     widget.channel.close();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 
@@ -54,7 +73,7 @@ class _ControlPageState extends State<ControlPage> {
           children: <Widget>[
             Row(children: <Widget>[
               Expanded(
-                  child: VerticalSlider(channel: widget.channel,)
+                  child: VerticalSlider(channel: widget.channel)
               ),
 
               Spacer(),

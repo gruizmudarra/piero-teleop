@@ -19,11 +19,10 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
   var sliderValue = 0.0;
 
   void _sendData() {
-    int l = (100*linVel).toInt();
     int a = (100*angVel).toInt();
-    Iterable<int> package = [l, a];
-    widget.channel.writeAll(package, "\n");
-    widget.channel.write("\n");
+    widget.channel.write(a);
+    widget.channel.write("a");
+    print(angVel);
   }
 
   @override

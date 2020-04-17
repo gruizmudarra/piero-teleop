@@ -19,10 +19,9 @@ class _VerticalSliderState extends State<VerticalSlider> {
 
   void _sendData() {
     int l = (100*linVel).toInt();
-    int a = (100*angVel).toInt();
-    Iterable<int> package = [l, a];
-    widget.channel.writeAll(package, "\n");
-    widget.channel.write("\n");
+    widget.channel.write(l);
+    widget.channel.write("l");
+    print(linVel);
   }
 
   @override
