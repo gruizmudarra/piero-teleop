@@ -12,5 +12,7 @@ double roundDouble(double value, int nDecimals) {
 }
 
 // Global variables sent via TCP/IP connection
+String linVelInput;
+String angVelInput;
 var linVel = 0.0;
 var angVel = 0.0;

@@ -21,7 +21,7 @@ class _VerticalSliderState extends State<VerticalSlider> {
     int l = (100*linVel).toInt();
     widget.channel.write(l);
     widget.channel.write("l");
-    print(linVel);
+    print(l);
   }
 
   @override
@@ -44,6 +44,7 @@ class _VerticalSliderState extends State<VerticalSlider> {
                     child: CupertinoSlider(
                     min: -0.5,
                     max: 0.5,
+                    divisions: 10,
                     value: sliderValue,
                     onChanged: (newValue) {
                       setState(() {

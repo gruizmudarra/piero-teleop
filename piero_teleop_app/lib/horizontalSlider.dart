@@ -22,7 +22,7 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
     int a = (100*angVel).toInt();
     widget.channel.write(a);
     widget.channel.write("a");
-    print(angVel);
+    print(a);
   }
 
   @override

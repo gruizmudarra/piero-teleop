@@ -8,7 +8,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  Socket socket;
+ Socket socket;
 
   MyApp(Socket s) {
     this.socket = s;
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: ControlPage(
-        channel: socket,
+         channel: socket,
       ),
     );
   }
