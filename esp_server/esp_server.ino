@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 // GLOBAL VARIABLES
 WiFiServer wifiServer(80); // Server instance
-const char* ssid = "MOVISTAR_48BA";
-const char* password = "2094B0CEBB5AB5D2DF58";
+const char* ssid = "your-ssid";
+const char* password = "your-password";
 // Set your Static IP address
 IPAddress local_IP(192, 168, 1, 131);
 // Set your Gateway IP address
